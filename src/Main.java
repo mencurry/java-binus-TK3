@@ -25,10 +25,11 @@ public class Main {
             System.out.println("2. Each level, you have 10 chances to answer correctly");
             System.out.println("3. To get through to next level you have to score 70 point each level\n");
 
+            // Level 1
             System.out.println("Level 1");
             System.out.println("d         e         t         t         l         i");
             for (int i = 1; i <= 10; i++) {
-                System.out.print(i + "> Your Answer :");
+                System.out.print(i + "> Your Answer : ");
                 userAnswer = input.nextLine().trim().toLowerCase();
 
                 if (Arrays.asList(dictionaryLevel1).contains(userAnswer) && !userAnswersArray.contains(userAnswer)) {
@@ -41,16 +42,27 @@ public class Main {
                     System.out.println("Sorry, you're incorrect!");
                 }
             }
-            System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..");
+            System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..\n");
             finalScore += currentScore;
 
+            System.out.println("Correct answers : ");
+            int currentIdx = 0;
+            while (currentIdx < dictionaryLevel1.length) {
+                for (int i = 0; i < 10 && currentIdx < dictionaryLevel1.length; i++) {
+                    System.out.print(dictionaryLevel1[currentIdx] + ", ");
+                    currentIdx++;
+                }
+                System.out.println();
+            }
+
+            // Level 2
             if (finalScore > 70) {
                 currentScore = 0;
                 userAnswersArray.clear();
-                System.out.println("Level 2");
+                System.out.println("\nLevel 2");
                 System.out.println("s         e         c         a         e         n");
                 for (int i = 1; i <= 10; i++) {
-                    System.out.print(i + "> Your Answer :");
+                    System.out.print(i + "> Your Answer : ");
                     userAnswer = input.nextLine().trim().toLowerCase();
 
                     if (Arrays.asList(dictionaryLevel2).contains(userAnswer) && !userAnswersArray.contains(userAnswer)) {
@@ -63,17 +75,28 @@ public class Main {
                         System.out.println("Sorry, that word doesn't exist in our dictionary!");
                     }
                 }
-                System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..");
+                System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..\n");
                 finalScore += currentScore;
+
+                System.out.println("Correct answers : ");
+                currentIdx = 0;
+                while (currentIdx < dictionaryLevel2.length) {
+                    for (int i = 0; i < 10 && currentIdx < dictionaryLevel2.length; i++) {
+                        System.out.print(dictionaryLevel2[currentIdx] + ", ");
+                        currentIdx++;
+                    }
+                    System.out.println();
+                }
             }
 
+            // Level 3
             if (finalScore > 70) {
                 currentScore = 0;
                 userAnswersArray.clear();
-                System.out.println("Level 3");
+                System.out.println("\nLevel 3");
                 System.out.println("h         k         r         n         e         o");
                 for (int i = 1; i <= 10; i++) {
-                    System.out.print(i + "> Your Answer :");
+                    System.out.print(i + "> Your Answer : ");
                     userAnswer = input.nextLine().trim().toLowerCase();
 
                     if (Arrays.asList(dictionaryLevel3).contains(userAnswer) && !userAnswersArray.contains(userAnswer)) {
@@ -86,13 +109,15 @@ public class Main {
                         System.out.println("Sorry, that word doesn't exist in our dictionary!");
                     }
                 }
-                System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..");
+                System.out.println("You had answered 10 times with " + (currentScore / 10) + " right answers..\n");
                 finalScore += currentScore;
+
+                System.out.println("Overall score : " + finalScore);
+                System.out.println("You win!!");
             }
-            System.out.println(finalScore);
 
             // ask the user if they would like to retry the program
-            System.out.print("\n\nApakah anda ingin mengulangi program?  [Y/T] ");
+            System.out.print("\nDo you want to retry?  [Y/T] ");
             String retry = input.nextLine();
 
             if (retry.equalsIgnoreCase("t")){
